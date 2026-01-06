@@ -1,4 +1,12 @@
 def safe_call(func, a, b):
-    ### Replace with your own code (begin) ###
-    pass
-    ### Replace with your own code (end)   ###
+    try:
+        result = func(a, b)
+        return (True, result, None)
+
+    except (ZeroDivisionError,
+            TypeError,
+            ValueError,
+            IndexError,
+            KeyError) as e:
+        return (False, None, e.__class__.__name__)
+
